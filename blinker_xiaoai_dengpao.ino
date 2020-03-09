@@ -8,7 +8,6 @@ char ssid[] = "*******";
 char pswd[] = "*******";
 BlinkerButton Button1("btn-on");     //定义按钮数据
 BlinkerButton Button2("btn-off"); 
-BlinkerButton Button3("btn-aaa");  
 bool oState = false;
 int counter = 0;
 void miotPowerState(const String & state)
@@ -86,20 +85,6 @@ void button2_callback(const String & state)     //点灯app内控制按键触发
 
 }
 
-void button3_callback(const String & state)     //点灯app内控制按键触发
-{  
-  
-    BLINKER_LOG("get button state:on", state);
-     Blinker.print(state);
-    if(state=="on"){
-    digitalWrite(0,LOW);
-   // Button3.print("on");
-     }else if(state =="off"){
-            digitalWrite(0,HIGH);
-        
-    //        Button3.print("off");
-    }
-
 
 }
 
@@ -120,7 +105,6 @@ void setup()
     BlinkerMIOT.attachQuery(miotQuery);
     Button1.attach(button1_callback);  
     Button2.attach(button2_callback);     
-    Button3.attach(button3_callback);   
 }
 
 void loop()
